@@ -35,11 +35,7 @@ const App = () => {
     );
   });
 
-  return (
-    <div className="flex flex-col p-2">
-      {colorBars}
-    </div>
-  );
+  return <div className="flex flex-col p-2">{colorBars}</div>;
 };
 
 interface Color {
@@ -47,7 +43,7 @@ interface Color {
   hex: string;
 }
 
-const valueChart = new Map([
+const valueChart = new Map<string, number>([
   ["0", 0],
   ["1", 1],
   ["2", 2],
@@ -74,7 +70,7 @@ const hexToRGB = (hexValue: string) => {
 };
 
 const sum = (charOne: string, charTwo: string) => {
-  return 16 * valueChart.get(charOne) + valueChart.get(charTwo);
+  return 16 * valueChart.get(charOne)! + valueChart.get(charTwo)!;
 };
 
 export default App;
