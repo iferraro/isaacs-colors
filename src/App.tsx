@@ -24,7 +24,7 @@ const App = () => {
       // keys are hex values without the hashtag
       <div
         key={color.hex.substring(1)}
-        className="p-2 m-2 rounded-xl text-white bg-black"
+        className="p-2 m-2 rounded-xl text-white font-bold bg-black"
       >
         {color.name}
         <br />
