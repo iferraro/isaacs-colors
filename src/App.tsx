@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import ColorBar from "./components/ColorBar";
+
+interface Color {
+  name: string;
+  hex: string;
+}
 
 const blobURI =
-  "https://isaacscolorsstorage.blob.core.windows.net/primary/isaacs-custom-colors.json";
+"https://isaacscolorsstorage.blob.core.windows.net/primary/isaacs-custom-colors.json";
 
 const App = () => {
   const [allColors, setAllColors] = useState([]);
@@ -22,26 +28,17 @@ const App = () => {
   const colorBars = allColors.map((color: Color) => {
     return (
       // keys are hex values without the hashtag
-      <div
+      <ColorBar
         key={color.hex.substring(1)}
-        className="p-2 m-2 rounded-xl text-white font-bold bg-black"
-      >
-        {color.name}
-        <br />
-        {color.hex}
-        <br />
-        {hexToRGB(color.hex)}
-      </div>
+        name={color.name}
+        hex={color.hex}
+        rgb={hexToRGB(color.hex)}
+      />
     );
   });
 
-  return <div className="flex flex-col p-2">{colorBars}</div>;
+  return <div className="flex flex-col p-2 bg-black">{colorBars}</div>;
 };
-
-interface Color {
-  name: string;
-  hex: string;
-}
 
 const valueChart = new Map<string, number>([
   ["0", 0],
