@@ -1,24 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 
-interface BarInfo {
+interface BarProps {
   name: string;
   hex: string;
   rgb: string;
 }
 
-const ColorBar = ({ name, hex, rgb }: BarInfo) => {
+const ColorBar = ({ name, hex, rgb }: BarProps) => {
+  const [open, setOpen] = useState(false);
+
+  const handleClick = () => {
+    setOpen(!open);
+  };
+
   return (
-    <div className="flex m-2">
-      <svg width="300" height="100" viewBox="0 0 3 1" fill={hex}>
-        <path d="M 0,0 v 1 h 3 v -1 z" />
+    <div className="flex m-2" onClick={handleClick}>
+      <svg
+        width={open ? 360 : 840}
+        height={open ? 360 : 120}
+        viewBox={open ? "0 0 1 1" : "0 0 7 1"}
+        fill={hex}
+      >
+        <path d="M 0,0 v 1 h 7 v -1 z" />
       </svg>
-      <p className="ml-4 text-white font-bold">
-        {name}
-        <br />
-        {hex}
-        <br />
-        {rgb}
-      </p>
+      {open && (
+        <p className="ml-4 text-white font-bold">
+          {name}
+          <br />
+          {hex}
+          <br />
+          {rgb}
+        </p>
+      )}
     </div>
   );
 };
