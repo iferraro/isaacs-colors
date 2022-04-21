@@ -2,19 +2,17 @@ import React from "react";
 import Color from "../interfaces/interfaces";
 import ColorBar from "./ColorBar";
 
-interface ContainerProps {
+interface BarContainerProps {
   allColors: Color[];
 }
 
-const BarContainer = (props: ContainerProps) => {
-  const colorBars = props.allColors.map((color: Color) => {
+const BarContainer = ({ allColors }: BarContainerProps) => {
+  const colorBars = allColors.map((color: Color) => {
     return (
       // keys are hex values without the hashtag
       <ColorBar
         key={color.hex.substring(1)}
-        name={color.name}
-        hex={color.hex}
-        rgb={color.rgb}
+        colorInfo={color}
       />
     );
   });

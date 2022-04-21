@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import Color from "../interfaces/interfaces";
 
-const ColorBar = ({ name, hex, rgb }: Color) => {
+interface ColorBarProps {
+  colorInfo: Color;
+}
+
+const ColorBar = ({ colorInfo }: ColorBarProps) => {
   const [open, setOpen] = useState(false);
 
   const handleClick = () => {
@@ -15,18 +19,18 @@ const ColorBar = ({ name, hex, rgb }: Color) => {
           width={open ? 360 : 840}
           height={open ? 360 : 120}
           viewBox={open ? "0 0 1 1" : "0 0 7 1"}
-          fill={hex}
+          fill={colorInfo.hex}
         >
           <path d="M 0,0 v 1 h 7 v -1 z" />
         </svg>
       </div>
       {open && (
         <p className="ml-4 text-white font-bold">
-          {name}
+          {colorInfo.name}
           <br />
-          {hex}
+          {colorInfo.hex}
           <br />
-          {rgb}
+          {colorInfo.rgb}
         </p>
       )}
     </div>
