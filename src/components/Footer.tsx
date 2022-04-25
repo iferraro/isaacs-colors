@@ -1,7 +1,7 @@
 import React from "react";
 
 const Footer = () => {
-  return <p className="text-white">View site code on GitHub</p>;
+  return <footer className="font-theme text-white">View site code on GitHub</footer>;
 };
 
 export default Footer;

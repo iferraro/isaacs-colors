@@ -6,6 +6,9 @@ module.exports = {
         "in-expo": "cubic-bezier(.41,.33,.55,.91)",
         "out-expo": "cubic-bezier(.41,.33,.55,.91)",
       },
+      fontFamily: {
+        theme: ['"Computer Modern"', "Times New Roman"],
+      },
     },
   },
   plugins: [],
