@@ -16,8 +16,8 @@ const BarContainer = ({ allColors }: BarContainerProps) => {
       />
     );
   });
-
-  return <div className="flex flex-col justify-center">{colorBars}</div>;
+  
+  return <div className="mx-auto mt-8">{colorBars}</div>;
 };
 
 export default BarContainer;
