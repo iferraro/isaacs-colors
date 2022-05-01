@@ -17,7 +17,7 @@ const BarContainer = ({ allColors }: BarContainerProps) => {
     );
   });
   
-  return <div className="mx-auto mt-8">{colorBars}</div>;
+  return <div className="mx-auto mt-8 w-full max-w-4xl">{colorBars}</div>;
 };
 
 export default BarContainer;

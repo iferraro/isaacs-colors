@@ -27,7 +27,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className="flex flex-col text-center p-2 bg-black">
+    <div className="flex flex-col p-4 bg-black">
       <Header />
       <BarContainer allColors={allColors} />
       <Footer />

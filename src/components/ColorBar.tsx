@@ -6,81 +6,37 @@ interface ColorBarProps {
   colorInfo: Color;
 }
 
-type ColorBarState = "long" | "short" | "square";
-
 const ColorBar = ({ colorInfo }: ColorBarProps) => {
-  const [currentBarState, setCurrentBarState] = useState<ColorBarState>("long");
+  const [revealed, setRevealed] = useState(false);
 
   const handleClick = () => {
-    if (currentBarState === "long") {
-      // turn long bar into short bar after n milliseconds
-      // turn short bar into square after n millis
-      // mount info?
-      setTimeout(() => {
-        setCurrentBarState("short");
-      }, 150);
-      setTimeout(() => {
-        setCurrentBarState("square");
-      }, 300);
-    }
-    if (currentBarState === "square") {
-      // unmount info?
-      // turn square into short bar after n milliseconds
-      // turn short bar into square after n milliseconds
-      setTimeout(() => {
-        setCurrentBarState("short");
-      }, 150);
-      setTimeout(() => {
-        setCurrentBarState("long");
-      }, 300);
-    }
-    return;
-  };
-
-  const getViewBox = () => {
-    if (currentBarState === "long") {
-      return "0 0 7 1";
-    }
-    if (currentBarState === "short") {
-      return "0 0 3 1";
-    }
-    return "0 0 1 1";
-  };
-
-  const getClassName = () => {
-    if (currentBarState === "long") {
-      return "w-[840px] h-[120px] transition-[width, height] in-expo duration-150";
-    }
-    if (currentBarState === "short") {
-      return "w-[360px] h-[120px] transition-[width, height] in-expo duration-150";
-    }
-    return "w-[360px] h-[360px] transition-[width, height] in-expo duration-150";
-  };
-
-  const getPathD = () => {
-    if (currentBarState === "long") {
-      return "M 0,0 v 1 h 7 v -1 z";
-    }
-    if (currentBarState === "short") {
-      return "M 0,0 v 1 h 3 v -1 z";
-    }
-    return "M 0,0 v 1 h 1 v -1 z";
+    setRevealed(!revealed);
   };
 
   return (
-    <div className="flex my-4">
+    <div className="flex items-center my-4 w-full">
       <svg
-        viewBox={getViewBox()}
+        viewBox={revealed ? "0 0 3 3" : "0 0 12 3"}
         fill={colorInfo.hex}
-        className={getClassName()}
+        className={
+          revealed
+            ? "w-1/4 h-full transition-[width] out-expo duration-150"
+            : "w-full h-full transition-[width] in-expo duration-150"
+        }
         onClick={handleClick}
       >
-        <path d={getPathD()} />
+        <path d={revealed ? "M 0,0 v 3 h 3 v -3 z" : "M 0,0 v 3 h 12 v -3 z"} />
       </svg>
-      <div className="flex justify-center items-center">
+      <div
+        className={
+          revealed
+            ? "w-full transition-[width] out-expo duration-150"
+            : "transition-[width] in-expo duration-150"
+        }
+      >
         <Transition
           as="div"
-          show={currentBarState === "square"}
+          show={revealed}
           unmount={false}
           enter="transition-opacity duration-150 delay-150 in-expo"
           enterFrom="opacity-0"
@@ -89,13 +45,13 @@ const ColorBar = ({ colorInfo }: ColorBarProps) => {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <p className="ml-4 font-theme text-2xl text-white">
-            {colorInfo.name}
+          <div className="flex flex-col justify-center ml-4 p-4 font-theme text-left text-2xl text-white border-2 border-white border-dashed rounded-lg">
+            <h2 className="text-3xl">{colorInfo.name}</h2>
             <br />
             {colorInfo.hex}
             <br />
             {colorInfo.rgb}
-          </p>
+          </div>
         </Transition>
       </div>
     </div>
