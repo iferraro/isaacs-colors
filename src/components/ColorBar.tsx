@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Transition } from "@headlessui/react";
 import Color from "../interfaces/interfaces";
+import CopyButton from "./CopyButton";
 
 interface ColorBarProps {
   colorInfo: Color;
@@ -45,12 +46,19 @@ const ColorBar = ({ colorInfo }: ColorBarProps) => {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="flex flex-col justify-center ml-4 p-4 font-theme text-left text-2xl text-white border-2 border-white border-dashed rounded-lg">
+          <div className="flex flex-col text-center ml-4 p-4 font-theme text-left text-2xl text-white border-2 border-white border-dashed rounded-lg">
             <h2 className="text-3xl">{colorInfo.name}</h2>
-            <br />
-            {colorInfo.hex}
-            <br />
-            {colorInfo.rgb}
+            <hr className="my-2 text-white" />
+            <span className="flex my-2 justify-center">
+              <span id="hexval" className="flex mr-4">
+                {colorInfo.hex}
+                <CopyButton colorValue={colorInfo.hex}/>
+              </span>
+              <span id="rgbval" className="flex">
+                {colorInfo.rgb}
+                <CopyButton colorValue={colorInfo.rgb}/>
+              </span>
+            </span>
           </div>
         </Transition>
       </div>
