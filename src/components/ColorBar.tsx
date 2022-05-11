@@ -15,53 +15,56 @@ const ColorBar = ({ colorInfo }: ColorBarProps) => {
   };
 
   return (
-    <div className="flex items-center my-4 w-full">
+    <div className="relative grid grid-rows-5 grid-cols-5 my-4">
       <svg
-        viewBox={revealed ? "0 0 3 3" : "0 0 12 3"}
+        viewBox="0 0 1 1"
         fill={colorInfo.hex}
-        className={
-          revealed
-            ? "w-1/4 h-full transition-[width] out-expo duration-150"
-            : "w-full h-full transition-[width] in-expo duration-150"
-        }
+        className="row-span-5 col-span-5 transition-[width] in-expo duration-300"
         onClick={handleClick}
       >
-        <path d={revealed ? "M 0,0 v 3 h 3 v -3 z" : "M 0,0 v 3 h 12 v -3 z"} />
+        <path d="M 0,0 v 1 h 1 v -1 z" />
       </svg>
-      <div
-        className={
-          revealed
-            ? "w-full transition-[width] out-expo duration-150"
-            : "transition-[width] in-expo duration-150"
-        }
+      <svg
+        viewBox="0 0 1 1"
+        fill={colorInfo.hex}
+        className="absolute top-4 left-4 row-start-1 row-span-2 col-start-1 col-span-2 z-20"
       >
-        <Transition
-          as="div"
-          show={revealed}
-          unmount={false}
-          enter="transition-opacity duration-150 delay-150 in-expo"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="transition-opacity duration-150 out-expo"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-        >
-          <div className="flex flex-col text-center ml-4 p-4 font-theme text-left text-2xl text-white border-2 border-white border-dashed rounded-lg">
-            <h2 className="text-3xl">{colorInfo.name}</h2>
-            <hr className="my-2 text-white" />
-            <span className="flex my-2 justify-center">
-              <span id="hexval" className="flex mr-4">
+        <path d="M 0,0 v 1 h 1 v -1 z" />
+      </svg>
+      <Transition
+        as="div"
+        show={revealed}
+        unmount={false}
+        enter="transition-opacity duration-150 delay-150 in-expo"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+        leave="transition-opacity duration-150 out-expo"
+        leaveFrom="opacity-100"
+        leaveTo="opacity-0"
+      >
+        <div className="absolute top-0 right-0 flex items-center col-start-1 col-span-5 row-start-1 row-span-5 p-4 w-full h-full text-right font-theme text-white bg-black opacity-50">
+          <button
+            type="button"
+            className="absolute top-0 right-0 p-2 w-12 h-12 text-3xl text-white font-bold transition in-expo duration-150 z-10 hover:scale-125"
+            onClick={handleClick}
+          >
+            &times;
+          </button>
+          <div className="absolute bottom-1/4 right-4 w-full z-30">
+            <div className="text-right text-3xl">{colorInfo.name}</div>
+            <div className="flex flex-col my-2 text-right text-xl">
+              <span>
                 {colorInfo.hex}
-                <CopyButton colorValue={colorInfo.hex}/>
+                <CopyButton colorValue={colorInfo.hex} />
               </span>
-              <span id="rgbval" className="flex">
+              <span>
                 {colorInfo.rgb}
-                <CopyButton colorValue={colorInfo.rgb}/>
+                <CopyButton colorValue={colorInfo.rgb} />
               </span>
-            </span>
+            </div>
           </div>
-        </Transition>
-      </div>
+        </div>
+      </Transition>
     </div>
   );
 };

@@ -7,7 +7,7 @@ const Header = () => {
         Custom Color Visual Reference
       </h1>
       <h2 className="my-2">Isaac Ferraro</h2>
-      <h2 className="my-2">Updated 4/30/22</h2>
+      <h2 className="my-2">Updated 5/10/22</h2>
     </div>
   );
 };
