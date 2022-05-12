@@ -17,7 +17,7 @@ const SquaresContainer = ({ allColors }: SquaresContainerProps) => {
   return (
     <>
       <p className="mt-8 font-theme text-center text-xl text-white">
-        Click on a square to see its name, HEX, and RGB values
+        Click on a square
       </p>
       <div className="mx-auto mt-4 w-full max-w-2xl">{colorSquares}</div>;
     </>
