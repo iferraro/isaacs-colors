@@ -17,6 +17,7 @@ const ColorSquare = ({ colorInfo }: ColorSquareProps) => {
   return (
     <div className="relative grid grid-rows-5 grid-cols-5 my-4 font-theme text-white">
       <svg
+        xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1 1"
         fill={colorInfo.hex}
         className="row-span-5 col-span-5"
@@ -37,6 +38,7 @@ const ColorSquare = ({ colorInfo }: ColorSquareProps) => {
       >
         <div className="absolute top-0 left-0 w-full h-full p-4 text-right bg-black opacity-60" />
         <svg
+          xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 2 2"
           fill={colorInfo.hex}
           className="absolute top-4 left-4 row-start-1 row-span-2 col-start-1 col-span-2"

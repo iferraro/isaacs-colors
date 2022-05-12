@@ -1,4 +1,5 @@
 import React from "react";
+import TectonicLogoButton from "./TectonicLogoButton";
 import GitHubButton from "./GitHubButton";
 import LinkedInButton from "./LinkedInButton";
 import EmailButton from "./EmailButton";
@@ -18,6 +19,7 @@ const Footer = () => {
         on GitHub
       </p>
       <div className="flex justify-center">
+        <TectonicLogoButton />
         <GitHubButton />
         <LinkedInButton />
         <EmailButton />
