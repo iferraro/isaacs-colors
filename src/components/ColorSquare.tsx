@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
 import Color from "../interfaces/interfaces";
 import CopyButton from "./CopyButton";
 
-interface ColorBarProps {
+interface ColorSquareProps {
   colorInfo: Color;
 }
 
-const ColorBar = ({ colorInfo }: ColorBarProps) => {
+const ColorSquare = ({ colorInfo }: ColorSquareProps) => {
   const [revealed, setRevealed] = useState(false);
 
   const handleClick = () => {
@@ -27,7 +27,7 @@ const ColorBar = ({ colorInfo }: ColorBarProps) => {
       <svg
         viewBox="0 0 2 2"
         fill={colorInfo.hex}
-        className="absolute top-4 left-4 row-start-1 row-span-2 col-start-1 col-span-2 z-20"
+        className="absolute top-4 left-4 row-span-2 col-start-1 col-span-2 z-20"
       >
         <circle cx={1} cy={1} r={1} />
       </svg>
@@ -35,38 +35,43 @@ const ColorBar = ({ colorInfo }: ColorBarProps) => {
         as="div"
         show={revealed}
         unmount={false}
-        enter="transition-opacity duration-150 delay-150 in-expo"
+        enter="transition-opacity duration-200 in-expo"
         enterFrom="opacity-0"
         enterTo="opacity-100"
-        leave="transition-opacity duration-150 out-expo"
+        leave="transition-opacity duration-200 out-expo"
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
-        <div className="absolute top-0 right-0 flex items-center col-start-1 col-span-5 row-start-1 row-span-5 p-4 w-full h-full text-right bg-black opacity-60 z-0">
+        <>
+          <div className="absolute top-0 right-0 flex items-center col-span-5 row-span-5 p-4 w-full h-full text-right bg-black opacity-60 z-0" />
           <button
             type="button"
-            className="absolute top-0 right-0 p-2 w-12 h-12 text-3xl font-bold transition in-expo duration-150 z-10 hover:scale-125"
+            className="absolute top-0 right-0 p-2 w-12 h-12 text-3xl font-bold opacity-60 transition in-expo duration-150 z-10 hover:scale-125 hover:opacity-100"
             onClick={handleClick}
           >
             &times;
           </button>
           <div className="absolute bottom-1/4 right-4 w-full">
-            <div className="text-right text-3xl">{colorInfo.name}</div>
+            <div className="text-right text-3xl opacity-60">
+              {colorInfo.name}
+            </div>
             <div className="flex flex-col my-2 text-right text-xl">
-              <span>
-                {colorInfo.hex}
-                <CopyButton colorValue={colorInfo.hex} />
-              </span>
-              <span>
-                {colorInfo.rgb}
+              <div>
+                <span className="opacity-60">{colorInfo.hex}</span>
+                <span>
+                  <CopyButton colorValue={colorInfo.hex} />
+                </span>
+              </div>
+              <div>
+                <span className="opacity-60">{colorInfo.rgb}</span>
                 <CopyButton colorValue={colorInfo.rgb} />
-              </span>
+              </div>
             </div>
           </div>
-        </div>
+        </>
       </Transition>
     </div>
   );
 };
 
-export default ColorBar;
+export default ColorSquare;

@@ -6,8 +6,8 @@ const Header = () => {
       <h1 className="mt-[20vh] text-5xl">
         Custom Color Visual Reference
       </h1>
-      <h2 className="my-2">Isaac Ferraro</h2>
-      <h2 className="my-2">Updated 5/10/22</h2>
+      <h2 className="my-2">Created by Isaac Ferraro</h2>
+      <h2 className="my-2">Updated 5/11/22</h2>
     </div>
   );
 };
