@@ -3,7 +3,7 @@ import axios from "axios";
 import Color from "./interfaces/interfaces";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import SquaresContainer from "./components/SquaresContainer";
+import BoxesContainer from "./components/BoxesContainer";
 
 const blobURI =
   "https://isaacscolorsstorage.blob.core.windows.net/primary/isaacs-custom-colors.json";
@@ -29,7 +29,7 @@ const App = () => {
   return (
     <div className="flex flex-col p-4 bg-black">
       <Header />
-      <SquaresContainer allColors={allColors} />
+      <BoxesContainer allColors={allColors} />
       <Footer />
     </div>
   );

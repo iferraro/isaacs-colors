@@ -1,16 +1,16 @@
 import React from "react";
 import Color from "../interfaces/interfaces";
-import ColorSquare from "./ColorSquare";
+import ColorBox from "./ColorBox";
 
 interface SquaresContainerProps {
   allColors: Color[];
 }
 
 const SquaresContainer = ({ allColors }: SquaresContainerProps) => {
-  const colorSquares = allColors.map((color: Color) => {
+  const colorBoxes = allColors.map((color: Color) => {
     return (
       // keys are hex values without the hashtag
-      <ColorSquare key={color.hex.substring(1)} colorInfo={color} />
+      <ColorBox key={color.hex.substring(1)} colorInfo={color} />
     );
   });
 
@@ -19,7 +19,7 @@ const SquaresContainer = ({ allColors }: SquaresContainerProps) => {
       <p className="mt-8 font-theme text-center text-xl text-white">
         Click on a square
       </p>
-      <div className="mx-auto mt-4 w-full max-w-2xl">{colorSquares}</div>;
+      <div className="mx-auto mt-4 w-full max-w-2xl">{colorBoxes}</div>;
     </>
   );
 };
