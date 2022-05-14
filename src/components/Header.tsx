@@ -4,10 +4,9 @@ const Header = () => {
   return (
     <div className="font-theme text-center text-white text-3xl">
       <h1 className="mt-[20vh] text-5xl">
-        Custom Color Visual Reference
+        Isaac's Custom Colors
       </h1>
-      <h2 className="my-2">Created by Isaac Ferraro</h2>
-      <h2 className="my-2">Updated 5/11/22</h2>
+      <h2 className="my-2">Updated 5/13/22</h2>
     </div>
   );
 };

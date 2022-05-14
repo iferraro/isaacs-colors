@@ -3,11 +3,11 @@ import { Transition } from "@headlessui/react";
 import Color from "../interfaces/interfaces";
 import CopyButton from "./CopyButton";
 
-interface ColorSquareProps {
+interface ColorBoxProps {
   colorInfo: Color;
 }
 
-const ColorSquare = ({ colorInfo }: ColorSquareProps) => {
+const ColorBox = ({ colorInfo }: ColorBoxProps) => {
   const [revealed, setRevealed] = useState(false);
 
   const handleClick = () => {
@@ -15,15 +15,15 @@ const ColorSquare = ({ colorInfo }: ColorSquareProps) => {
   };
 
   return (
-    <div className="relative grid grid-rows-5 grid-cols-5 my-4 font-theme text-white">
+    <div className="relative grid grid-rows-5 grid-cols-6 my-4 font-theme text-white">
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 1 1"
+        viewBox="0 0 6 5"
         fill={colorInfo.hex}
-        className="row-span-5 col-span-5"
+        className="row-span-5 col-span-6"
         onClick={handleClick}
       >
-        <path d="M 0,0 v 1 h 1 v -1 z" />
+        <path d="M 0,0 v 5 h 6 v -5 z" />
       </svg>
       <Transition
         as="div"
@@ -41,7 +41,7 @@ const ColorSquare = ({ colorInfo }: ColorSquareProps) => {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 2 2"
           fill={colorInfo.hex}
-          className="absolute top-4 left-4 row-start-1 row-span-2 col-start-1 col-span-2"
+          className="absolute top-4 right-4 bottom-4 left-4 row-start-1 row-span-3 col-start-1 col-span-3"
         >
           <circle cx={1} cy={1} r={1} />
         </svg>
@@ -52,7 +52,7 @@ const ColorSquare = ({ colorInfo }: ColorSquareProps) => {
         >
           &times;
         </button>
-        <div className="absolute bottom-1/4 right-4">
+        <div className="absolute bottom-4 right-4">
           <h1 className="text-right text-3xl opacity-60">{colorInfo.name}</h1>
           <div className="flex flex-col my-2 text-right text-xl">
             <div>
@@ -70,4 +70,4 @@ const ColorSquare = ({ colorInfo }: ColorSquareProps) => {
   );
 };
 
-export default ColorSquare;
+export default ColorBox;
