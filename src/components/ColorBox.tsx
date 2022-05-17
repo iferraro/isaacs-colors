@@ -48,7 +48,7 @@ const ColorBox = ({ colorInfo }: ColorBoxProps) => {
         </svg>
         <button
           type="button"
-          className="absolute top-0 right-0 w-12 h-12 text-3xl font-bold opacity-60 transition in-expo duration-150 hover:scale-125 hover:opacity-100"
+          className="absolute top-0 right-0 w-12 h-12 text-3xl font-bold opacity-60 in-expo duration-150 hover:scale-125 hover:opacity-100"
           onClick={handleClick}
         >
           &times;
