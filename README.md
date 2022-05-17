@@ -10,11 +10,12 @@ https://www.isaacscolors.io/
 - Microsoft Azure
 - Axios
 - Tailwind CSS
-- Headless UI
 - Heroicons
 - Bootstrap Icons
 - Font Squirrel
 - Netlify
 ## Screenshots
-![Top of page - closed](https://i.imgur.com/0APHPnD.png)
-![Top of page - open](https://i.imgur.com/V0oSLN9.png)
+### Plain View
+![Top of page - closed](https://i.imgur.com/yWOJIa6.png)
+### Info View
+![Top of page - open](https://i.imgur.com/LURMAA2.png)
