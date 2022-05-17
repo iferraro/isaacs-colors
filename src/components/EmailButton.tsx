@@ -4,7 +4,7 @@ const EmailButton = () => {
       <a href="mailto:ieferraro@outlook.com">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-[25px] fill-white transition in-expo duration-150 hover:scale-125"
+          className="h-[25px] fill-white in-expo duration-150 hover:scale-125"
           viewBox="0 2 20 15.5"
         >
           <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Transition } from "@headlessui/react";
 import Color from "../interfaces/interfaces";
 import CopyButton from "./CopyButton";
 
@@ -21,20 +20,22 @@ const ColorBox = ({ colorInfo }: ColorBoxProps) => {
         viewBox="0 0 6 5"
         fill={colorInfo.hex}
         className="row-span-5 col-span-6"
-        onClick={handleClick}
       >
         <path d="M 0,0 v 5 h 6 v -5 z" />
       </svg>
-      <Transition
-        as="div"
-        show={revealed}
-        unmount={false}
-        enter="transition-opacity duration-150 in-expo"
-        enterFrom="opacity-0"
-        enterTo="opacity-100"
-        leave="transition-opacity duration-150 out-expo"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0"
+
+      <div
+        className={
+          revealed
+            ? "opacity-100 out-expo duration-150"
+            : "opacity-0 in-expo duration-150"
+        }
+        onClick={() => {
+          if (revealed) {
+            return;
+          }
+          handleClick();
+        }}
       >
         <div className="absolute top-0 left-0 w-full h-full p-4 text-right bg-black opacity-60" />
         <svg
@@ -43,11 +44,11 @@ const ColorBox = ({ colorInfo }: ColorBoxProps) => {
           fill={colorInfo.hex}
           className="absolute top-4 right-4 bottom-4 left-4 row-start-1 row-span-3 col-start-1 col-span-3"
         >
-          <circle cx={1} cy={1} r={1} />
+          <circle cx="1" cy="1" r="1" />
         </svg>
         <button
           type="button"
-          className="absolute top-0 right-0 w-12 h-12 text-3xl font-bold opacity-60 transition in-expo duration-150 hover:scale-125 hover:opacity-100"
+          className="absolute top-0 right-0 w-12 h-12 text-3xl font-bold opacity-60 in-expo duration-150 hover:scale-125 hover:opacity-100"
           onClick={handleClick}
         >
           &times;
@@ -65,7 +66,7 @@ const ColorBox = ({ colorInfo }: ColorBoxProps) => {
             </div>
           </div>
         </div>
-      </Transition>
+      </div>
     </div>
   );
 };

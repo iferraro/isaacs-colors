@@ -16,10 +16,10 @@ const SquaresContainer = ({ allColors }: SquaresContainerProps) => {
 
   return (
     <>
-      <p className="mt-8 font-theme text-center text-xl text-white">
+      <p className="mb-8 font-theme text-center text-xl text-white">
         Click on a box
       </p>
-      <div className="mx-auto mt-8 w-full max-w-2xl">{colorBoxes}</div>;
+      <div className="mx-auto mb-8 w-full max-w-2xl">{colorBoxes}</div>;
     </>
   );
 };
