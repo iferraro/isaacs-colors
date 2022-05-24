@@ -2,11 +2,11 @@ import React from "react";
 import Color from "../interfaces/interfaces";
 import ColorBox from "./ColorBox";
 
-interface SquaresContainerProps {
+interface BoxesContainerProps {
   allColors: Color[];
 }
 
-const SquaresContainer = ({ allColors }: SquaresContainerProps) => {
+const BoxesContainer = ({ allColors }: BoxesContainerProps) => {
   const colorBoxes = allColors.map((color: Color) => {
     return (
       // keys are hex values without the hashtag
@@ -24,4 +24,4 @@ const SquaresContainer = ({ allColors }: SquaresContainerProps) => {
   );
 };
 
-export default SquaresContainer;
+export default BoxesContainer;
