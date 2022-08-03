@@ -6,7 +6,7 @@ const Header = () => {
       <h1 className="mt-20 mb-2 text-5xl">
         Isaac's Custom Colors
       </h1>
-      <h2 className="mb-8">Updated 5/17/22</h2>
+      <h2 className="mb-8">Updated 8/2/22</h2>
     </div>
   );
 };

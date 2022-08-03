@@ -5,14 +5,12 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import BoxesContainer from "./components/BoxesContainer";
 
-const blobURI =
-  "https://isaacscolorsstorage.blob.core.windows.net/primary/isaacs-custom-colors.json";
-
 const App = () => {
   const [allColors, setAllColors] = useState<Array<Color>>([]);
+  
   const getAllColors = async () => {
     try {
-      const response = await axios.get(blobURI);
+      const response = await axios.get("isaacs-custom-colors.json");
       const newColors = response.data.map((c: Color) => {
         return { ...c, rgb: hexToRGB(c.hex) };
       });
