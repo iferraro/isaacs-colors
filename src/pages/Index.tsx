@@ -16,9 +16,8 @@ export default function Index() {
   });
 
   return (
-    <main id="content">
-      <h1>Welcome to the Color app</h1>
-      <p>Click on a color below to learn more.</p>
+    <main id="content" class="flex flex-col items-center justify-center">
+      <h1>The Colors</h1>
       <ColorsTable colors={colors()} />
     </main>
   );

@@ -12,7 +12,9 @@
   },
   "imports": {
     "@hono/hono": "jsr:@hono/hono@^4.6.12",
-    "@solidjs/router": "npm:@solidjs/router@^0.14.10"
+    "@solidjs/router": "npm:@solidjs/router@^0.14.10",
+    "tailwindcss": "npm:tailwindcss@^3.4.17",
+    "autoprefixer": "npm:autoprefixer@^10.4.20"
   },
   "compilerOptions": {
     "jsx": "react-jsx",
