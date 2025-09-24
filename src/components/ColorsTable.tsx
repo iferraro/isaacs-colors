@@ -7,9 +7,9 @@ type ColorsTableProps = {
 
 // TODO:
 // 1. Outline the selected color (likely white)
-// 2. No title in info bar upon page load
+// 2. No title in info bar upon page load (start with first color)
 export function ColorsTable(props: ColorsTableProps) {
-  const [selectedColor, setSelectedColor] = createSignal<Color | null>(null);
+  const [selectedColor, setSelectedColor] = createSignal<Color | null>(props.colors[0]);
   const [copiedColor, setCopiedColor] = createSignal<Color | null>(null);
 
   const copyToClipboard = async (hex: string) => {
