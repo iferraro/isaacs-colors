@@ -29,14 +29,14 @@ export function ColorsTable(props: ColorsTableProps) {
 
   const infoBar = (
     <Show when={selectedColor()}>
-      <div class="grid grid-cols-[2fr_1fr] gap-2">
-        <h1 class="justify-self-start self-center text-xl text-white">
+      <div class="flex justify-between gap-2">
+        <h1 class="justify-self-start self-center text-xl text-black">
           {selectedColor()?.name ?? "The Colors"}
         </h1>
         <button
           type="button"
           onClick={() => copyToClipboard(selectedColor()?.id || "")}
-          class="flex items-center justify-between justify-self-end gap-2 p-2 max-w-fit text-white text-sm rounded-full hover:bg-blue-600"
+          class="flex items-center justify-between justify-self-end gap-2 p-2 max-w-fit text-black text-sm rounded-full hover:bg-blue-600"
         >
           <div
             class="w-8 h-8 rounded-full"
