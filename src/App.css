@@ -25,3 +25,41 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Neumorphic button style */
+.neumorphic {
+  background: #ffffff;
+  box-shadow: 8px 8px 16px #babecc, -8px -8px 16px #ffffff;
+  border-radius: 9999px; /* matches rounded-full */
+  transition: box-shadow 120ms ease, transform 120ms ease, background-color 120ms ease;
+}
+
+.neumorphic:hover {
+  box-shadow: 10px 10px 20px #b1b8c7, -10px -10px 20px #ffffff;
+}
+
+.neumorphic:active {
+  box-shadow: inset 8px 8px 16px #babecc, inset -8px -8px 16px #ffffff;
+  transform: translateY(1px);
+}
+
+/* Accessible focus outline utility */
+.focus-outline-blue:focus-visible {
+  outline: 2px solid #2563eb; /* blue-600 */
+  outline-offset: 2px;
+}
+
+/* Neumorphic shadow for color swatches */
+.neumorphic-shadow {
+  box-shadow: 4px 4px 8px #babecc, -4px -4px 8px #ffffff;
+  transition: box-shadow 120ms ease, transform 120ms ease;
+}
+
+.neumorphic-shadow:hover {
+  box-shadow: 6px 6px 12px #b1b8c7, -6px -6px 12px #ffffff;
+}
+
+.neumorphic-shadow:active {
+  box-shadow: inset 4px 4px 8px #babecc, inset -4px -4px 8px #ffffff;
+  transform: translateY(1px);
+}

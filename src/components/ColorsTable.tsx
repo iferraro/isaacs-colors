@@ -36,7 +36,7 @@ export function ColorsTable(props: ColorsTableProps) {
         <button
           type="button"
           onClick={() => copyToClipboard(selectedColor()?.id || "")}
-          class="flex items-center justify-between justify-self-end gap-2 p-2 max-w-fit text-black text-sm rounded-full hover:bg-blue-600"
+          class="neumorphic flex items-center justify-between justify-self-end gap-2 p-2 max-w-fit text-black text-sm rounded-full"
         >
           <div
             class="w-8 h-8 rounded-full"
@@ -53,7 +53,7 @@ export function ColorsTable(props: ColorsTableProps) {
       {(color) => (
         <button
           type="button"
-          class="h-8"
+          class="aspect-[1.618/1] focus-outline-blue neumorphic-shadow"
           style={{ "background-color": color.id }}
           onClick={() => setSelectedColor(color)}
         ></button>
@@ -64,7 +64,7 @@ export function ColorsTable(props: ColorsTableProps) {
   return (
     <div class="flex flex-col gap-4 w-full max-w-md">
       {infoBar}
-      <div class="grid grid-cols-3 gap-4">{colorChart}</div>
+      <div class="grid grid-cols-3 gap-2">{colorChart}</div>
     </div>
   );
 }
