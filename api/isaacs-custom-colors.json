@@ -4,16 +4,16 @@
     "name": "Jaunty"
   },
   {
-    "id": "#6f4b27",
-    "name": "Armorbearer"
-  },
-  {
     "id": "#f77f00",
     "name": "Pompous Orange"
   },
   {
     "id": "#fe9c01",
     "name": "Honeycomb"
+  },
+  {
+    "id": "#f2d21e",
+    "name": "Scoparius"
   },
   {
     "id": "#ebb017",
@@ -126,9 +126,5 @@
   {
     "id": "#b51b37",
     "name": "Protagonist"
-  },
-  {
-    "id": "#b9535d",
-    "name": "Kidney Bean"
   }
 ]
