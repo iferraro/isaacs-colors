@@ -1,5 +1,6 @@
 import type { Color } from "../types.ts";
 import { For, createSignal, createEffect, Show } from "solid-js";
+import { HeroIconsSquare2Stack } from "./HeroIconsSquare2Stack.tsx";
 
 type ColorsTableProps = {
   colors: Color[];
@@ -43,6 +44,7 @@ export function ColorsTable(props: ColorsTableProps) {
             style={{ "background-color": selectedColor()?.id }}
           ></div>
           {copiedColor() === selectedColor() ? "Copied!" : selectedColor()?.id}
+          <HeroIconsSquare2Stack />
         </button>
       </div>
     </Show>
@@ -66,7 +68,7 @@ export function ColorsTable(props: ColorsTableProps) {
   return (
     <div class="flex flex-col gap-2 w-full max-w-md">
       {infoBar}
-      <hr class="border-white border-dashed" />
+      <hr class="border-white border-dashed pb-2" />
       {colorChart}
     </div>
   );
