@@ -6,15 +6,28 @@ type ColorsTableProps = {
   colors: Color[];
 };
 
-// TODO:
-// 1. Outline the selected color (likely white)
 export function ColorsTable(props: ColorsTableProps) {
   const [selectedColor, setSelectedColor] = createSignal<Color | null>(null);
   const [copiedColor, setCopiedColor] = createSignal<Color | null>(null);
+  const [isTransitioning, setIsTransitioning] = createSignal(false);
+  const [copyButtonDisplayText, setCopyButtonDisplayText] = createSignal<string>("");
 
   createEffect(() => {
     if (!selectedColor() && props.colors.length > 0) {
       setSelectedColor(props.colors[0]);
+    }
+  });
+
+  // Update display text when copiedColor changes
+  createEffect(() => {
+    const newText =
+      copiedColor() === selectedColor() ? "Copied!" : selectedColor()?.id || "";
+    if (newText !== copyButtonDisplayText()) {
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setCopyButtonDisplayText(newText);
+        setTimeout(() => setIsTransitioning(false), 50);
+      }, 150);
     }
   });
 
@@ -43,7 +56,13 @@ export function ColorsTable(props: ColorsTableProps) {
             class="w-8 h-8 rounded-full"
             style={{ "background-color": selectedColor()?.id }}
           ></div>
-          {copiedColor() === selectedColor() ? "Copied!" : selectedColor()?.id}
+          <span
+            class={`transition-opacity duration-150 ease-in-out ${
+              isTransitioning() ? "opacity-0" : "opacity-100"
+            }`}
+          >
+            {copyButtonDisplayText()}
+          </span>
           <HeroIconsSquare2Stack />
         </button>
       </div>
