@@ -39,6 +39,6 @@ jobs:
         with:
           project: "isaacferrar-isaacs-colo-35"
           entrypoint: "main.ts"
-          root: "dist"
+          root: ""
           
           
