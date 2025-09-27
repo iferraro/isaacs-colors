@@ -16,8 +16,7 @@ export default function Index() {
   });
 
   return (
-    <main id="content" class="flex flex-col items-center justify-center">
-      <h1>The Colors</h1>
+    <main id="content" class="flex items-center justify-center p-4">
       <ColorsTable colors={colors()} />
     </main>
   );

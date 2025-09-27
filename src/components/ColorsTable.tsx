@@ -1,41 +1,94 @@
 import type { Color } from "../types.ts";
-import { For } from "solid-js";
+import { For, createSignal, createEffect, Show } from "solid-js";
+import { HeroIconsSquare2Stack } from "./HeroIconsSquare2Stack.tsx";
 
 type ColorsTableProps = {
   colors: Color[];
 };
 
 export function ColorsTable(props: ColorsTableProps) {
-  const colorRows = (
-    <For each={props.colors}>
-      {(color) => (
-        <tr class="border-b border-gray-200 hover:bg-gray-50">
-          <td class="px-6 py-4 font-medium text-gray-900">
-            <div class="flex items-center gap-3">
-              <div 
-                class="w-6 h-6 rounded-md" 
-                style={{"background-color": color.id}}
-              ></div>
-              {color.name}
-            </div>
-          </td>
-          <td class="px-6 py-4 text-gray-500">{color.id}</td>
-        </tr>
-      )}
-    </For>
+  const [selectedColor, setSelectedColor] = createSignal<Color | null>(null);
+  const [copiedColor, setCopiedColor] = createSignal<Color | null>(null);
+  const [isTransitioning, setIsTransitioning] = createSignal(false);
+  const [copyButtonDisplayText, setCopyButtonDisplayText] = createSignal<string>("");
+
+  createEffect(() => {
+    if (!selectedColor() && props.colors.length > 0) {
+      setSelectedColor(props.colors[0]);
+    }
+  });
+
+  // Update display text when copiedColor changes
+  createEffect(() => {
+    const newText =
+      copiedColor() === selectedColor() ? "Copied!" : selectedColor()?.id || "";
+    if (newText !== copyButtonDisplayText()) {
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setCopyButtonDisplayText(newText);
+        setTimeout(() => setIsTransitioning(false), 50);
+      }, 150);
+    }
+  });
+
+  async function copyToClipboard(hex: string) {
+    try {
+      await navigator.clipboard.writeText(hex);
+      setCopiedColor(selectedColor());
+      setTimeout(() => setCopiedColor(null), 2000);
+    } catch (err) {
+      console.error("Failed to copy to clipboard:", err);
+    }
+  }
+
+  const infoBar = (
+    <Show when={selectedColor()}>
+      <div class="flex flex-col items-start gap-2">
+        <h1 class="text-2xl text-white font-bold">
+          {selectedColor()?.name ?? "The Colors"}
+        </h1>
+        <button
+          type="button"
+          onClick={() => copyToClipboard(selectedColor()?.id || "")}
+          class="flex items-center justify-between justify-self-end gap-2 p-2 max-w-fit text-white text-md rounded-full font-bold"
+        >
+          <div
+            class="w-8 h-8 rounded-full"
+            style={{ "background-color": selectedColor()?.id }}
+          ></div>
+          <span
+            class={`transition-opacity duration-150 ease-in-out ${
+              isTransitioning() ? "opacity-0" : "opacity-100"
+            }`}
+          >
+            {copyButtonDisplayText()}
+          </span>
+          <HeroIconsSquare2Stack />
+        </button>
+      </div>
+    </Show>
+  );
+
+  const colorChart = (
+    <div class="grid grid-cols-4 gap-2">
+      <For each={props.colors}>
+        {(color) => (
+          <button
+            type="button"
+            class="aspect-[1.618/1] rounded-xl focus-outline-blue"
+            style={{ "background-color": color.id }}
+            onClick={() => setSelectedColor(color)}
+          ></button>
+        )}
+      </For>
+    </div>
   );
 
   return (
-    <div class="overflow-x-auto">
-      <table class="min-w-full bg-white border-2 border-black rounded-lg shadow-sm">
-        <thead class="bg-gray-50">
-          <tr>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Hex</th>
-          </tr>
-        </thead>
-        <tbody class="bg-white divide-y divide-gray-200">{colorRows}</tbody>
-      </table>
+    <div class="flex flex-col gap-2 w-full max-w-md">
+      {infoBar}
+      <hr class="border-white border-dashed pb-2" />
+      {colorChart}
     </div>
   );
 }
