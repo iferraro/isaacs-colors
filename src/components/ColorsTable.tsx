@@ -29,14 +29,14 @@ export function ColorsTable(props: ColorsTableProps) {
 
   const infoBar = (
     <Show when={selectedColor()}>
-      <div class="flex justify-between gap-2">
-        <h1 class="justify-self-start self-center text-xl text-black">
+      <div class="flex justify-between items-center gap-2">
+        <h1 class="justify-self-start self-center text-xl text-white font-bold">
           {selectedColor()?.name ?? "The Colors"}
         </h1>
         <button
           type="button"
           onClick={() => copyToClipboard(selectedColor()?.id || "")}
-          class="neumorphic flex items-center justify-between justify-self-end gap-2 p-2 max-w-fit text-black text-sm rounded-full"
+          class="flex items-center justify-between justify-self-end gap-2 p-2 max-w-fit text-white text-sm rounded-full font-bold"
         >
           <div
             class="w-8 h-8 rounded-full"
@@ -49,22 +49,25 @@ export function ColorsTable(props: ColorsTableProps) {
   );
 
   const colorChart = (
-    <For each={props.colors}>
-      {(color) => (
-        <button
-          type="button"
-          class="aspect-[1.618/1] focus-outline-blue neumorphic-shadow"
-          style={{ "background-color": color.id }}
-          onClick={() => setSelectedColor(color)}
-        ></button>
-      )}
-    </For>
+    <div class="grid grid-cols-4 gap-2">
+      <For each={props.colors}>
+        {(color) => (
+          <button
+            type="button"
+            class="aspect-[1.618/1] rounded-xl focus-outline-blue"
+            style={{ "background-color": color.id }}
+            onClick={() => setSelectedColor(color)}
+          ></button>
+        )}
+      </For>
+    </div>
   );
 
   return (
-    <div class="flex flex-col gap-4 w-full max-w-md">
+    <div class="flex flex-col gap-2 w-full max-w-md">
       {infoBar}
-      <div class="grid grid-cols-3 gap-2">{colorChart}</div>
+      <hr class="border-white border-dashed" />
+      {colorChart}
     </div>
   );
 }
