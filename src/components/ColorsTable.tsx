@@ -44,7 +44,7 @@ export function ColorsTable(props: ColorsTableProps) {
   const infoBar = (
     <Show when={selectedColor()}>
       <div class="flex flex-col items-start gap-2">
-        <h1 class="text-2xl text-white font-bold">
+        <h1 class="pt-8 text-2xl text-white font-bold">
           {selectedColor()?.name ?? "The Colors"}
         </h1>
         <button
