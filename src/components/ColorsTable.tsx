@@ -10,7 +10,8 @@ export function ColorsTable(props: ColorsTableProps) {
   const [selectedColor, setSelectedColor] = createSignal<Color | null>(null);
   const [copiedColor, setCopiedColor] = createSignal<Color | null>(null);
   const [isTransitioning, setIsTransitioning] = createSignal(false);
-  const [copyButtonDisplayText, setCopyButtonDisplayText] = createSignal<string>("");
+  const [copyButtonDisplayText, setCopyButtonDisplayText] =
+    createSignal<string>("");
 
   createEffect(() => {
     if (!selectedColor() && props.colors.length > 0) {
@@ -47,24 +48,26 @@ export function ColorsTable(props: ColorsTableProps) {
         <h1 class="pt-8 text-2xl text-white font-bold">
           {selectedColor()?.name ?? "The Colors"}
         </h1>
-        <button
-          type="button"
-          onClick={() => copyToClipboard(selectedColor()?.id || "")}
-          class="flex items-center justify-between justify-self-end gap-2 p-2 max-w-fit text-white text-md rounded-full font-bold"
-        >
+        <div class="flex items-center">
           <div
             class="w-8 h-8 rounded-full"
             style={{ "background-color": selectedColor()?.id }}
           ></div>
-          <span
-            class={`transition-opacity duration-150 ease-in-out ${
-              isTransitioning() ? "opacity-0" : "opacity-100"
-            }`}
+          <button
+            type="button"
+            onClick={() => copyToClipboard(selectedColor()?.id || "")}
+            class="flex items-center justify-between justify-self-end gap-2 p-2 max-w-fit text-white text-md rounded-full font-bold"
           >
-            {copyButtonDisplayText()}
-          </span>
-          <HeroIconsSquare2Stack />
-        </button>
+            <span
+              class={`transition-opacity duration-150 ease-in-out ${
+                isTransitioning() ? "opacity-0" : "opacity-100"
+              }`}
+            >
+              {copyButtonDisplayText()}
+            </span>
+            <HeroIconsSquare2Stack />
+          </button>
+        </div>
       </div>
     </Show>
   );
