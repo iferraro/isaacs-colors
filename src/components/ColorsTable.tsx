@@ -78,7 +78,7 @@ export function ColorsTable(props: ColorsTableProps) {
         {(color) => (
           <button
             type="button"
-            class="aspect-[1.618/1] rounded-xl focus-outline-blue"
+            class="aspect-[1.618/1] rounded-xl focus-outline-blue transition-transform transform active:scale-90"
             style={{ "background-color": color.id }}
             onClick={() => setSelectedColor(color)}
           ></button>
