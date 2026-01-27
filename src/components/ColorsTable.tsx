@@ -1,6 +1,5 @@
 import type { Color } from "../types.ts";
 import { For, createSignal, createEffect, Show } from "solid-js";
-import { HeroIconsSquare2Stack } from "./HeroIconsSquare2Stack.tsx";
 
 type ColorsTableProps = {
   colors: Color[];
@@ -82,7 +81,6 @@ export function ColorsTable(props: ColorsTableProps) {
             >
               {colorHexCode()}
             </span>
-            <HeroIconsSquare2Stack />
           </button>
         </div>
       </div>
@@ -97,7 +95,10 @@ export function ColorsTable(props: ColorsTableProps) {
             type="button"
             class="aspect-[1.618/1] rounded-xl focus-outline-blue transition-transform transform active:scale-90"
             style={{ "background-color": color.id }}
-            onClick={() => setSelectedColor(color)}
+            onClick={() => {
+              setSelectedColor(color);
+              copyToClipboard(color.id);
+            }}
           ></button>
         )}
       </For>
