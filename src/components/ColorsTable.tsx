@@ -69,19 +69,13 @@ export function ColorsTable(props: ColorsTableProps) {
             class="w-8 h-8 rounded-full transition-colors duration-150"
             style={{ "background-color": selectedColor()?.id }}
           ></div>
-          <button
-            type="button"
-            onClick={() => copyToClipboard(selectedColor()?.id || "")}
-            class="flex items-center justify-between justify-self-end gap-2 p-2 max-w-fit text-white text-md rounded-full font-bold"
+          <span
+            class={`flex items-center justify-between justify-self-end gap-2 p-2 max-w-fit text-white text-md font-bold transition-opacity duration-150 ease-in-out ${
+              colorHexCodeTransitioning() ? "opacity-0" : "opacity-100"
+            }`}
           >
-            <span
-              class={`transition-opacity duration-150 ease-in-out ${
-                colorHexCodeTransitioning() ? "opacity-0" : "opacity-100"
-              }`}
-            >
-              {colorHexCode()}
-            </span>
-          </button>
+            {colorHexCode()}
+          </span>
         </div>
       </div>
     </Show>
